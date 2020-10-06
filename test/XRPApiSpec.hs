@@ -23,7 +23,7 @@ import Unsafe (unsafeHead)
 
 spec :: Spec
 spec =
-    with (mkServer <$> mkContext conf) $ do
+    with (mkServer <$> mkContext conf) $
             describe "GET /:currency/balance/:address" $ do
                 it "responds with 200 when given address is found" $
                     get "/xrp/balance/rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" `shouldRespondWith` 200

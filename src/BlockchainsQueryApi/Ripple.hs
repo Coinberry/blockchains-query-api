@@ -1,8 +1,8 @@
- {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskell #-}
 
- module BlockchainsQueryApi.Ripple
-  ( ripple
-  ) where
+module BlockchainsQueryApi.Ripple
+    ( ripple
+    ) where
 
 import BlockchainsQueryApi.Prelude
 

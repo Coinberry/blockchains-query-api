@@ -3,3 +3,4 @@
 
 # Ignore some builtin hints
 - ignore: {name: Reduce duplication}
+- ignore: {name: Use camelCase}
