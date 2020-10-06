@@ -9,6 +9,7 @@ import qualified BTCApiSpec as BTC
 import qualified ETHApiSpec as ETH
 import qualified XRPApiSpec as XRP
 import qualified ParitySpec as Parity
+import qualified HaskoinSpec as Haskoin
 
 import qualified RippleSpec as Ripple
 
@@ -22,7 +23,7 @@ main = do
 
     hspecWith defaultConfig specsWithoutMockServer    
     where
-        specsWithoutMockServer = BTC.spec >> Parity.spec
+        specsWithoutMockServer = Parity.spec >> Haskoin.spec
 
 withParity :: IO () -> IO ()
 withParity action = 

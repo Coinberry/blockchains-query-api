@@ -96,6 +96,7 @@ test-suite blockchains-query-api-test
   other-modules:       BTCApiSpec
                      , ETHApiSpec
                      , ParitySpec
+                     , HaskoinSpec
                      , RippleSpec
                      , XRPApiSpec
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
