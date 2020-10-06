@@ -2,7 +2,7 @@
 {-# LANGUAGE QuasiQuotes #-}
 module BlockchainsQueryApi.Parity
     ( parity
-    -- exported for text only
+    -- exported for test only
     , parseTx
     ) where
 

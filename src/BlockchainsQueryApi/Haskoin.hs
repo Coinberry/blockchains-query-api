@@ -1,5 +1,7 @@
 module BlockchainsQueryApi.Haskoin
     ( haskoin
+    -- exported for test only
+    , parseTx
     ) where
 
 import BlockchainsQueryApi.Prelude
@@ -74,7 +76,7 @@ getTransaction :: (MonadIO m,  MonadThrow m) => URI -> Text -> m (Either Error T
 getTransaction uri paramHash = do
     (status, jsonBody) <- mkRequest uriToString'
     pure $ case status of
-        200 -> maybeToEither (RPCError "Invalid transaction body") (responseToTx jsonBody)
+        200 -> maybeToEither (RPCError "Invalid transaction body") (parseTx jsonBody)
         404 -> Left $ NotFound ("Could not find the hash " <> toS paramHash <> " in Haskoin")
         _ -> Left $ RPCError $ "Some other error, haskoin response status: " <> show status
     where
@@ -86,18 +88,23 @@ mkRequest uri =
     >>= httpJSON 
     >>= (\r -> pure (getResponseStatusCode r, getResponseBody r))
 
-responseToTx :: Value -> Maybe Tx
-responseToTx body = do
+parseTx :: Value -> Maybe Tx
+parseTx body = do
     rTxId <- body  ^? key "txid" . _String
     rFee <- body  ^? key "fee" . _Integer
     let
         rFromAddresses = body ^.. key "inputs" . values . key "address" . _String
         rFromValues = body ^.. key "inputs" . values . key "value" . _Integer
-        rToAddresses = body ^.. key "outputs" . values . key "address" . _String
-        rToValues = body ^.. key "outputs" . values . key "value" . _Integer
+        rOutputs = body ^.. key "outputs" . values
     pure Tx
         { txHash = rTxId
         , txFee = rFee
         , txFrom = uncurry Balance <$> zip rFromAddresses rFromValues
-        , txTo = uncurry Balance <$> zip rToAddresses rToValues
+        , txTo = mapMaybe parseBalance rOutputs
         }
+    where
+        parseBalance :: Value -> Maybe Balance
+        parseBalance balaceBody = do
+            rAddress <- balanceBody  ^? key "address" . _String
+            rValue <- balanceBody  ^? key "value" . _Integer
+            pure $ Balance rAddress rValue
