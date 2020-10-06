@@ -104,7 +104,7 @@ parseTx body = do
         }
     where
         parseBalance :: Value -> Maybe Balance
-        parseBalance balaceBody = do
+        parseBalance balanceBody = do
             rAddress <- balanceBody  ^? key "address" . _String
             rValue <- balanceBody  ^? key "value" . _Integer
             pure $ Balance rAddress rValue
