@@ -4,6 +4,8 @@ jobs:
     docker:
       - image: fpco/stack-build:lts-16.19
 
+    resource_class: large
+
     working_directory: /home/project
 
     environment:
