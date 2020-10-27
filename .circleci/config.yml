@@ -2,9 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: fpco/stack-build:lts-14.7
+      - image: fpco/stack-build:lts-16.19
 
-    working_directory: /home/stackage/project
+    working_directory: /home/project
 
     environment:
       TEST_RESULTS: /tmp/test-results
@@ -16,7 +16,7 @@ jobs:
       - restore_cache:
           key: stack-blockchains-query-api-final-{{ checksum "stack.yaml" }}
       - run: .circleci/setupenv.sh
-      - run: stack build --only-dependencies -j1
+      - run: stack build --only-dependencies
       - save_cache:
           key: stack-blockchains-query-api-{{ checksum "stack.yaml" }}
           paths:

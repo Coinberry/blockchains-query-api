@@ -11,12 +11,12 @@ import Network.URI
 import Control.Lens ((.~))
 
 -- Basic imports
-import qualified Network.Ethereum.Web3 as Eth
+import qualified Network.Web3               as Eth
 
 -- Eth API support
 import qualified Network.Ethereum.Api.Eth   as Eth
 import qualified Network.Ethereum.Api.Types as Eth
-import Crypto.Ethereum.Utils (importKey)
+import Crypto.Ethereum (importKey)
 import Data.ByteArray.HexString (HexString, toText)
 
 import Unsafe (unsafeHead)
