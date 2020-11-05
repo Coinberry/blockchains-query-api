@@ -2,9 +2,9 @@ version: 2
 jobs:
   build:
     - image: coinberry/haskell:latest
-        auth:
-          username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASS
+      auth:
+        username: $DOCKERHUB_USERNAME
+        password: $DOCKERHUB_PASS
 
     resource_class: large
 
