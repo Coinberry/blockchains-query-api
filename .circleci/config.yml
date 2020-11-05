@@ -1,8 +1,10 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: fpco/stack-build:lts-16.19
+    - image: coinberry/haskell:latest
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASS
 
     resource_class: large
 
