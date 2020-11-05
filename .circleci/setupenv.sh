@@ -11,6 +11,5 @@ apt-get -y update
 apt-get -y install rippled
 
 # Setup mock parity server
-curl -O https://releases.parity.io/ethereum/v2.5.9/x86_64-unknown-linux-gnu/parity
-cp $(pwd)/parity /usr/local/bin/
+wget -q -O /usr/local/bin/parity "https://releases.parity.io/ethereum/v2.5.9/x86_64-unknown-linux-gnu/parity"
 chmod 755 /usr/local/bin/parity
