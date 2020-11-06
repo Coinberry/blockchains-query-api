@@ -18,20 +18,11 @@ jobs:
       - checkout
       - restore_cache:
           key: stack-blockchains-query-api-{{ checksum "stack.yaml" }}
-      - restore_cache:
-          key: stack-blockchains-query-api-final-{{ checksum "stack.yaml" }}
       - run: .circleci/setupenv.sh
-      - run: stack build --only-dependencies
-      - save_cache:
-          key: stack-blockchains-query-api-{{ checksum "stack.yaml" }}
-          paths:
-            - ~/.stack
-            - .stack-work
-            - ~/.local
       - run: .circleci/build.sh
       - run: .circleci/test.sh
       - save_cache:
-          key: stack-blockchains-query-api-final-{{ checksum "stack.yaml" }}
+          key: stack-blockchains-query-api-{{ checksum "stack.yaml" }}
           paths:
             - ~/.stack
             - .stack-work
