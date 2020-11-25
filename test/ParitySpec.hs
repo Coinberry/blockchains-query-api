@@ -13,7 +13,7 @@ spec =
     describe "Parity" $
         describe "parseTx" $ do
             it "converts an empty result to nothing" $
-                parseTx emptyResult `shouldBe` (Left $ NotFound "Error decoding Tx")
+                parseTx emptyResult `shouldBe` Left (NotFound "Error decoding Tx")
             it "converts a valid transaction value to a Tx" $
                 parseTx validTransaction `shouldSatisfy` isRight
             where

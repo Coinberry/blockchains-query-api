@@ -11,9 +11,23 @@ packages:
       sha256: 35044d67979fe2a5cff05cf8736a06a265592433cdd03e13a72908ceed892612
   original:
     hackage: envparse-0.4.1@sha256:989902e6368532548f61de1fa245ad2b39176cddd8743b20071af519a709ce30,2842
+- completed:
+    hackage: web3-0.9.1.0@sha256:6b7faac0b63e7d0aae46588dd9a42e11f54ce0fdf4c2744bdf4cc6c5cbf39aa2,20760
+    pantry-tree:
+      size: 10617
+      sha256: 3af31e3eeb63e9a37d5a2a0383dc9c80ac4070eed2400834369e19a50f41ecb1
+  original:
+    hackage: web3-0.9.1.0@sha256:6b7faac0b63e7d0aae46588dd9a42e11f54ce0fdf4c2744bdf4cc6c5cbf39aa2,20760
+- completed:
+    hackage: vinyl-0.12.3@sha256:bc6bf64231a62656c2f01d26fc27876ea8664b670b019f6b7d94f357f20600d2,3871
+    pantry-tree:
+      size: 1857
+      sha256: 5dccd8ac766eaa1936774ae33ced6ff95cce719217d1550661a492474e6ea34a
+  original:
+    hackage: vinyl-0.12.3@sha256:bc6bf64231a62656c2f01d26fc27876ea8664b670b019f6b7d94f357f20600d2,3871
 snapshots:
 - completed:
-    size: 523700
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/7.yaml
-    sha256: 8e3f3c894be74d71fa4bf085e0a8baae7e4d7622d07ea31a52736b80f8b9bb1a
-  original: lts-14.7
+    size: 532832
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/23.yaml
+    sha256: fbb2a0519008533924c7753bd7164ddd1009f09504eb06674acad6049b46db09
+  original: lts-16.23

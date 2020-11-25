@@ -2,9 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: fpco/stack-build:lts-14.7
+      - image: coinberry/haskell:latest
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASS
 
-    working_directory: /home/stackage/project
+    resource_class: large
+
+    working_directory: /home/project
 
     environment:
       TEST_RESULTS: /tmp/test-results
@@ -13,20 +18,11 @@ jobs:
       - checkout
       - restore_cache:
           key: stack-blockchains-query-api-{{ checksum "stack.yaml" }}
-      - restore_cache:
-          key: stack-blockchains-query-api-final-{{ checksum "stack.yaml" }}
       - run: .circleci/setupenv.sh
-      - run: stack build --only-dependencies -j1
-      - save_cache:
-          key: stack-blockchains-query-api-{{ checksum "stack.yaml" }}
-          paths:
-            - ~/.stack
-            - .stack-work
-            - ~/.local
       - run: .circleci/build.sh
       - run: .circleci/test.sh
       - save_cache:
-          key: stack-blockchains-query-api-final-{{ checksum "stack.yaml" }}
+          key: stack-blockchains-query-api-{{ checksum "stack.yaml" }}
           paths:
             - ~/.stack
             - .stack-work

@@ -1,7 +1,11 @@
-resolver: lts-14.7
+resolver: lts-16.23
 
 packages:
 - .
 
 extra-deps:
 - envparse-0.4.1@sha256:989902e6368532548f61de1fa245ad2b39176cddd8743b20071af519a709ce30,2842
+- web3-0.9.1.0@sha256:6b7faac0b63e7d0aae46588dd9a42e11f54ce0fdf4c2744bdf4cc6c5cbf39aa2,20760
+- vinyl-0.12.3@sha256:bc6bf64231a62656c2f01d26fc27876ea8664b670b019f6b7d94f357f20600d2,3871
+
+allow-newer: true
